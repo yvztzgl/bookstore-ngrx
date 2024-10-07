@@ -1,0 +1,12 @@
+<div class="border p-[8px] flex flex-col gap-3 rounded relative shadow-md">
+    <span *ngIf="basketBook" class="bg-orange-400 absolute text-[12px] px-2 py-1 rounded-tr rounded-bl right-0 top-0 text-white">Sepette ({{basketBook.quantity}})</span>
+    <img [src]="book.imgUrl" class="h-[240px] w-[180px] m-auto" alt="">
+    <div class="flex flex-col">
+        <span><b>{{book.title}}</b></span>
+        <span class="opacity-60">{{book.author}}</span>
+    </div>
+    <button (click)="addBook(book)" class="w-full flex bg-black text-white p-2 rounded items-center justify-between">
+        <span>Satın Al</span>
+        <span>{{book.price}}TL</span>
+    </button>
+</div>

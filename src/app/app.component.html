@@ -1,0 +1,27 @@
+<div class="flex items-stretch w-full h-[100vh]">
+  <div class="w-[70%] h-full overflow-y-auto">
+    <app-book-list></app-book-list>
+  </div>
+  <div class="w-[30%] border-l h-full p-[16px] relative flex flex-col">
+    <div class="grow overflow-y-auto pb-4 flex flex-col gap-3" *ngIf="basketItems.length > 0">
+      <div class="flex border gap-2 px-2 py-2 rounded" *ngFor="let item of basketItems">
+        <div class="h-[64px]">
+          <img class="h-[64px] w-[52px]" [src]="item.item.imgUrl" alt="">
+        </div>
+        <div class="flex flex-col">
+          <span class="text-[14px]"><b>{{item.item.title}}</b></span>
+          <span class="opacity-60 text-[12px]">{{item.item.author}}</span>
+          <span>{{item.item.price * item.quantity}}TL</span>
+        </div>
+        <div class="ml-auto flex flex-col">
+          <button (click)="addBook(item.item)" class="bg-black flex items-center justify-center text-white w-[24px] h-[24px]">+</button>
+          <button class="border-l border-r">{{item.quantity}}</button>
+          <button class="bg-black flex items-center justify-center text-white w-[24px] h-[24px]">-</button>
+        </div>
+      </div>
+    </div>
+    <button [disabled]="total <= 0"
+      class="w-full disabled:opacity-30 mt-auto flex bg-black text-white p-2 rounded items-center justify-between"><span>Ödemeye
+        Git</span> <span>{{total}}TL</span></button>
+  </div>
+</div>
